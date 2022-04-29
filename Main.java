@@ -7,20 +7,26 @@
  */
 
 public class Main {
+  // main function
   public static void main(String[] args) {
+    // create the MyIntStack object
     MyIntStack stack = new MyIntStack();
 
-    stack.stack_push_range(10, -30);
+    // counts from left input to right input
+    stack.stack_push_range(40, -30);
 
     // for testing
-    stack.stack_view_all();
+    stack.view_all(); // still works even though it's a stack.
 
+    // pops last index
     stack.pop();
 
-    stack.stack_search(9);
+    // searches for given element
+    System.out.println(stack.search(9));
+    System.out.println(stack.peek());
 
-    stack.stack_empty();
-    stack.peek();
+    // empties
+    stack.clear();
 
   }
 }
