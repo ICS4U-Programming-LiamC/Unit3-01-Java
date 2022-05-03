@@ -34,15 +34,15 @@ public class MyIntStack {
     }
   }
 
-  // pushes numbers from i -> n
-  public void stack_push_range(int i, int n) {
-    if ((n - i) > 0) {
-      for (int j = 0; j < (n - i); j++) {
-        stack.push(i + j);
+  // pushes numbers from n -> i
+  public void stack_push_range(int n, int i) {
+    if ((i - n) > 0) {
+      for (int j = 0; j < (i - n); j++) {
+        stack.push(n + j);
       }
     } else {
-      for (int j = 0; j < (i - n); j++) {
-        stack.push(i - j);
+      for (int j = 0; j < (n - i); j++) {
+        stack.push(n - j);
       }
     }
   }
@@ -71,9 +71,10 @@ public class MyIntStack {
 
   // searches for a certain
   public int search(int element) {
-    return stack.search(element);
+    return stack.search(element) - 1;
   }
 
+  // prints all elements of the stack
   public void view_all() {
     for (int i = 0; i < stack.size(); i++) {
       System.out.println(stack.get(i));
