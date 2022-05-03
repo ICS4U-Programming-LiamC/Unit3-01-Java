@@ -33,7 +33,7 @@ public class Main {
       if (userInputString.equals("exit")) {
         break;
 
-      } else if (userInputString.equals("help")) {
+      } else if (userInputString.equals("help") || userInputString.equals("'help'")) {
         System.out.println("exit: exits the program.");
         System.out.println("display/show: disables/enables the operation asking text.");
         System.out.println("push: pushes an integer to the top of the stack.");
@@ -48,6 +48,7 @@ public class Main {
         System.out.println("Returns -1 if element was not found.");
         System.out.println("view_all: prints all elements in the stack.");
 
+        // turns the "What opperation would you like to perform next" on/off
       } else if (userInputString.equals("display") || userInputString.equals("show")) {
         if (show == true) {
           show = false;
@@ -55,6 +56,7 @@ public class Main {
           show = true;
         }
 
+        // push function, error checking for decimals
       } else if (userInputString.equals("push")) {
         System.out.println("Please input an integer to push");
         while (true) {
@@ -68,6 +70,9 @@ public class Main {
           }
         }
 
+        // stack_push, pushes n, i times
+        // makes sure both are integers
+        // and that I is positive/0
       } else if (userInputString.equals("stack_push")) {
         while (true) {
           System.out.println("Please input an integer to push and how many times to push it");
@@ -79,6 +84,8 @@ public class Main {
             if (tempInputIInt >= 0) {
               stack.stack_push(tempInputNInt, tempInputIInt);
               break;
+            } else {
+              System.out.println("Second input must be positive or 0");
             }
 
           } catch (NumberFormatException e) {
@@ -86,6 +93,8 @@ public class Main {
           }
         }
 
+        // pushes from i->n
+        // checks to make sure both are integers
       } else if (userInputString.equals("stack_push_range")) {
         System.out.println("Please input integers, n and i. Will push from n -> (i-1)");
         while (true) {
@@ -101,6 +110,8 @@ public class Main {
           }
         }
 
+        // pops the top of the stack
+        // makes sure the stack isn't empty
       } else if (userInputString.equals("pop")) {
         try {
           stack.pop();
@@ -108,7 +119,11 @@ public class Main {
           System.out.println("Stack was empty");
         }
 
+        // pops n number of elements from the top
+        // makes sure input is an integer and positive/0
+        // also makes sure the stack isn't empty
       } else if (userInputString.equals("stack_pop")) {
+        int extraTimesRan = 0;
         while (true) {
           System.out.println("Please input the number of elements to pop");
           tempInputN = scanner.nextLine();
@@ -123,17 +138,22 @@ public class Main {
         }
 
         try {
-          stack.stack_pop(tempInputNInt);
+          extraTimesRan = stack.stack_pop(tempInputNInt);
         } catch (IndexOutOfBoundsException e) {
           System.out.println("There was not " + tempInputNInt + " elements to pop");
+          System.out.println("The pop ran " + extraTimesRan + " extra times");
         }
 
+        // clears the stack
       } else if (userInputString.equals("clear")) {
         stack.clear();
 
+        // peeks the top of the stack
       } else if (userInputString.equals("peek")) {
         System.out.println(stack.peek());
 
+        // searches ther stack for a given input
+        // makes sure the users input is an integer
       } else if (userInputString.equals("search")) {
         System.out.println("Please input an integer to search for");
         while (true) {
@@ -147,11 +167,14 @@ public class Main {
           }
         }
 
+        // prints all elements of the stack
       } else if (userInputString.equals("view_all")) {
         stack.view_all();
 
+        // if the user didn't select a valid option
       } else {
         System.out.println(userInputString + " was not a valid input");
+        System.out.println("Try 'help' for all commands");
       }
     }
   }

@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -53,10 +52,15 @@ public class MyIntStack {
   }
 
   // pop the top i times
-  public void stack_pop(int i) {
+  public int stack_pop(int i) {
     for (int j = 0; j < i; j++) {
-      stack.pop();
+      try {
+        stack.pop();
+      } catch (EmptyStackException e) {
+        return (i - j);
+      }
     }
+    return 0;
   }
 
   // empties the stack
