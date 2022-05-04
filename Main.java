@@ -19,8 +19,8 @@ public class Main {
     String userInputString;
     String tempInputN;
     String tempInputI;
-    int tempInputNInt;
-    int tempInputIInt;
+    int tempInputIntN;
+    int tempInputIntI;
 
     System.out.println("Type 'help' to show list of commands");
     while (true) {
@@ -62,8 +62,8 @@ public class Main {
         while (true) {
           tempInputN = scanner.nextLine();
           try {
-            tempInputNInt = Integer.parseInt(tempInputN);
-            stack.push(tempInputNInt);
+            tempInputIntN = Integer.parseInt(tempInputN);
+            stack.push(tempInputIntN);
             break;
           } catch (NumberFormatException e) {
             System.out.println("Please input an integer");
@@ -79,10 +79,10 @@ public class Main {
           tempInputN = scanner.nextLine();
           tempInputI = scanner.nextLine();
           try {
-            tempInputNInt = Integer.parseInt(tempInputN);
-            tempInputIInt = Integer.parseInt(tempInputI);
-            if (tempInputIInt >= 0) {
-              stack.stack_push(tempInputNInt, tempInputIInt);
+            tempInputIntN = Integer.parseInt(tempInputN);
+            tempInputIntI = Integer.parseInt(tempInputI);
+            if (tempInputIntI >= 0) {
+              stack.stack_push(tempInputIntN, tempInputIntI);
               break;
             } else {
               System.out.println("Second input must be positive or 0");
@@ -101,9 +101,9 @@ public class Main {
           tempInputN = scanner.nextLine();
           tempInputI = scanner.nextLine();
           try {
-            tempInputNInt = Integer.parseInt(tempInputN);
-            tempInputIInt = Integer.parseInt(tempInputI);
-            stack.stack_push_range(tempInputNInt, tempInputIInt);
+            tempInputIntN = Integer.parseInt(tempInputN);
+            tempInputIntI = Integer.parseInt(tempInputI);
+            stack.stack_push_range(tempInputIntN, tempInputIntI);
             break;
           } catch (NumberFormatException e) {
             System.out.println("Please input integers, n and i. Will push from n->i");
@@ -128,8 +128,8 @@ public class Main {
           System.out.println("Please input the number of elements to pop");
           tempInputN = scanner.nextLine();
           try {
-            tempInputNInt = Integer.parseInt(tempInputN);
-            if (tempInputNInt >= 0) {
+            tempInputIntN = Integer.parseInt(tempInputN);
+            if (tempInputIntN >= 0) {
               break;
             }
           } catch (NumberFormatException e) {
@@ -138,9 +138,9 @@ public class Main {
         }
 
         try {
-          extraTimesRan = stack.stack_pop(tempInputNInt);
+          extraTimesRan = stack.stack_pop(tempInputIntN);
         } catch (IndexOutOfBoundsException e) {
-          System.out.println("There was not " + tempInputNInt + " elements to pop");
+          System.out.println("There was not " + tempInputIntN + " elements to pop");
           System.out.println("The pop ran " + extraTimesRan + " extra times");
         }
 
@@ -159,8 +159,8 @@ public class Main {
         while (true) {
           tempInputN = scanner.nextLine();
           try {
-            tempInputNInt = Integer.parseInt(tempInputN);
-            System.out.println(stack.search(tempInputNInt));
+            tempInputIntN = Integer.parseInt(tempInputN);
+            System.out.println(stack.search(tempInputIntN));
             break;
           } catch (NumberFormatException e) {
             System.out.println("Please input an integer to search for");
