@@ -116,7 +116,7 @@ public class Main {
         try {
           stack.pop();
         } catch (EmptyStackException e) {
-          System.out.println("Stack was empty");
+          System.out.println("Stack is empty");
         }
 
         // pops n number of elements from the top
@@ -150,26 +150,38 @@ public class Main {
 
         // peeks the top of the stack
       } else if (userInputString.equals("peek")) {
-        System.out.println(stack.peek());
+        if (stack.length() != 0) {
+          System.out.println(stack.peek());
+        } else {
+          System.out.println("Stack is empty");
+        }
 
         // searches ther stack for a given input
         // makes sure the users input is an integer
       } else if (userInputString.equals("search")) {
-        System.out.println("Please input an integer to search for");
-        while (true) {
-          tempInputN = scanner.nextLine();
-          try {
-            tempInputIntN = Integer.parseInt(tempInputN);
-            System.out.println(stack.search(tempInputIntN));
-            break;
-          } catch (NumberFormatException e) {
-            System.out.println("Please input an integer to search for");
+        if (stack.length() != 0) {
+          System.out.println("Please input an integer to search for");
+          while (true) {
+            tempInputN = scanner.nextLine();
+            try {
+              tempInputIntN = Integer.parseInt(tempInputN);
+              System.out.println(stack.search(tempInputIntN));
+              break;
+            } catch (NumberFormatException e) {
+              System.out.println("Please input an integer to search for");
+            }
           }
+        } else {
+          System.out.println("Stack is empty");
         }
 
         // prints all elements of the stack
       } else if (userInputString.equals("view_all")) {
-        stack.view_all();
+        if (stack.length() != 0) {
+          stack.view_all();
+        } else {
+          System.out.println("Stack is empty");
+        }
 
         // if the user didn't select a valid option
       } else {

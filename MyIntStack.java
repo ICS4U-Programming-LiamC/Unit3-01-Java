@@ -81,8 +81,15 @@ public class MyIntStack {
   // prints all elements of the stack
   public void view_all() {
     for (int i = 0; i < stack.size(); i++) {
-      System.out.println(stack.get(i));
+      if (i < stack.size() - 1) {
+        System.out.print(stack.get(i) + ", ");
+      } else {
+        System.out.println(stack.get(i));
+      }
     }
   }
 
+  public int length() {
+    return stack.size();
+  }
 }
